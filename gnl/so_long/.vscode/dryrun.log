@@ -1,0 +1,5 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory `/Users/abihe/Desktop/solong'
+gcc -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit -o so_long  ./so_long.c ./ft_error.c ./ft_strncmp.c ./ft_strrchr.c ./ft_images.c ./ft_move.c ./gnl/get_next_line.c ./gnl/get_next_line_utils.c ./printf/ft_putchar.c ./printf/ft_printf.c ./printf/ft_ptnbrunsigned.c ./printf/ft_puthex.c ./printf/ft_putnbr.c ./printf/ft_putstr.c
+make: Leaving directory `/Users/abihe/Desktop/solong'
+ 
