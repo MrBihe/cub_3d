@@ -1,10 +1,10 @@
 NAME = cub3D
 
-SRCS = check_map.c gnl/get_next_line.c gnl/get_next_line_utils.c main.c check_filename.c
+SRCS = check_map.c gnl/get_next_line.c gnl/get_next_line_utils.c main.c check_filename.c ft_split.c
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror -o $(NAME) 
+CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g3 -o $(NAME) 
 
 all : $(NAME)
 $(NAME) : $(SRCS)

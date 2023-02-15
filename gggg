@@ -1,0 +1,50 @@
+check the flag if he find
+
+
+if((map->l_map[i - 1][j] !='1' && map->l_map[i + 1][j] != '1') || (map->l_map[i][j - 1] !='1' && map->l_map[i][j + 1] != '1'))
+					{
+						printf("i am in line [%d] and len [%d] and value ==> %c\n", i, j, map->l_map[i][j]);
+						ft_error("map fuck dup");
+					}
+
+
+
+void check_comma_in_str(char *line)
+{
+    int i;
+    int counter;
+
+    i = 0;
+    counter = 0;
+    while (line[i])
+    {
+        if (line[i] == ',' && line[i + 1] == ',')
+            ft_error("Number of commas is incorrect!\n");
+        else if (line[i] == ',')
+            counter++;
+        i++;
+    }
+    if (counter != 2 || (line[i - 1] == ',' && !line[i]))
+        ft_error("Wrong input in the color section\n");
+}
+
+// setting colors
+int set_colors(char *str)
+{
+    char **s;
+    int r;
+    int g;
+    int b;
+
+    check_comma_in_str(str);
+    s = ft_split(str, ',');
+    if (!s[1] || !s[2] || !s)
+        ft_error("Color not set\n");
+    r = ft_atoi(s[0]);
+    g = ft_atoi(s[1]);
+    b = ft_atoi(s[2]);
+    free_all(s);
+    if ((r > 255 || r < 0) || (g > 255 || g < 0) || (b > 255 || b < 0))
+        ft_error("Color setting is not correct\n");
+    return (r << 16 | g << 8 | b);
+}
