@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:08:29 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/15 19:16:39 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/16 12:06:35 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,7 @@ char *get_texture(char *line)
 	char	*result;
 	char	*tmp;
 	
-	tmp = no_space(line);
+	tmp = line;
 	printf("[%s]\n", tmp);
 	result = strdup(tmp + 2);
 	printf("==>[%s]\n", result);
@@ -154,14 +154,21 @@ char *get_texture(char *line)
 void check_textures(t_map *map, char *line ,int fd)
 {
 	int i = 0;
+	char **sp;
+	
+	sp = ft_split(line, ' ');
+	if(ft_strncmp("NO", sp[0], 2))
+		printf("<<<<<>>>>>[%s] [%s]\n", sp[0], sp[1]);
+		printf("<<<<<[%s]>>>>>\n", line);
 	while(line)
 	{
 	
 	char *str;
-	str = strdup(line);
-	if (ft_strncmp("NO", str, 2) == 0)
+	str = no_space(line);
+	printf("++++++++%s\n",str);
+	if (ft_strncmp("NO", line, 2) == 0)
 		map->north = get_texture(line);
-	if (ft_strncmp("SO", line, 2) == 0)
+	if (ft_strncmp("SO", str, 2) == 0)
 		map->south = get_texture(line);
 	if (ft_strncmp("WE", line, 2) == 0)
 		map->west = get_texture(line);
