@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:08:36 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/15 19:13:40 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/16 20:05:02 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 typedef struct	s_map
 {
@@ -28,6 +29,7 @@ typedef struct	s_map
 	char	*east;
 	int		f;
 	int		c;
+	int		elem;
 	int		nb_line;
 	int		flag;
 	char	**l_map;

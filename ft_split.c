@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/04 10:33:34 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/15 15:50:08 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/16 19:08:11 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static size_t	sizeof_word(const char *s, char c)
 		i++;
 	return (i);
 }
-
+#include <stdio.h>
 char	**ft_split(const char *s, char c)
 {
 	char	**tab;

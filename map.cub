@@ -1,11 +1,11 @@
-                ddNO      north.xpm           
-SO            south.xpm
-EA                  north.xpm
-WE                     south.xpm
+NO north.xpm
+SO south.xpm
+WE south.xpm
+EA north.xpm
 
-C 225,30,0
 F 225,120,0
 
+C 225,30,0
 
 1111111111111111111111111
 1111111111111111111111111
