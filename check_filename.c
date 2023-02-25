@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 22:07:12 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/10 22:12:47 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/19 17:11:00 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,10 @@ void	check_filename(char *name)
 		if (ft_strncmp(ft_strrchr(name, '.'), ".cub", 4))
 			ft_error("Something wrong with the map file!");
 	}
+}
+
+void	ft_error(char *msg)
+{
+	printf("Error\n%s\n", msg);
+	exit(1);
 }

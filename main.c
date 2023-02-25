@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:47:39 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/16 23:51:16 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/21 18:28:55 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int main(int argc, char **argv)
 		for(int i = 0;map->l_map[i];i++)
 			printf("map=%s\n", map->l_map[i]);
 	}
+	if(!if_colors_filled(map) || !if_textures_filled(map))
+		ft_error("Elements not filled");
 	inside_map(map);
 	return (0);
 }
