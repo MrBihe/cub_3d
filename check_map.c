@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 18:08:29 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/25 17:14:50 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/26 20:44:08 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	ft_init(t_map *map)
 	map->west = NULL;
 	map->east = NULL;
 	map->l_map = NULL;
+	map->player = '\0';
 	map->f = 0;
 	map->elem = 0;
 	map->c = 0;
@@ -33,7 +34,6 @@ void	inside_map(t_map *map)
 	int j;
 	
 	i  = 0;
-			printf("========>%d\n", map->nb_line);
 	while(map->l_map[i])
 	{
 		j = 0;
@@ -50,15 +50,22 @@ void	inside_map(t_map *map)
 				}
 			if (!is_map_char(map->l_map[i][j]))
 			{
-				printf("i am in line [%d] and len [%d] and value ==> %c \n", i, j, map->l_map[i][j]);	
-				ft_error("There is a foreign charachter");
+				printf("**** i am in line [%d] and len [%d] and value ==> %c \n", i, j, map->l_map[i][j]);	
+				ft_error("There is a foreign charachter!");
 			}
-			if(is_play(map->l_map[i][j]))
-				p_pos(map, i, j);
+			if (is_play(map->l_map[i][j]))
+			{
+				if(map->player == '\0')
+					p_pos(map, i, j);
+				else
+					ft_error("Find more than 1 player!");
+			}
 			j++;
 		}
 		i++;
 	}
+	if(map->player == '\0')
+		ft_error("No player found!");
 }
 
 void	check_textures(t_map *map, char *line ,int fd)
@@ -69,7 +76,6 @@ void	check_textures(t_map *map, char *line ,int fd)
 		free(line);
 		line = get_next_line(fd);
 	}
-		printf("[%d] elements\n", map->elem);
 }
 
 void	colors_check(char *line)
@@ -102,7 +108,7 @@ int	set_colors(char *line)
 	colors_check(line);
 	color = ft_split(line, ' ');
 	if(color[2] || !color[1])
-	ft_error("ilias");
+	ft_error("Color elements not set very well");
 	rgb = ft_split(color[1], ',');
 	
 	if(!rgb || !rgb[1] || !rgb[2])
@@ -110,13 +116,9 @@ int	set_colors(char *line)
 	r = ft_atoi(rgb[0]);
 	g = ft_atoi(rgb[1]);
 	b = ft_atoi(rgb[2]);
-	printf("rgb[0] >[%s]<\n",rgb[0]);
-	printf("r >[%d]<\n",r);
-	printf("g >[%d]<\n",g);
-	printf("b >[%d]<\n",b);
-	if((r < 0 || r > 255) || (g < 0 || g > 255) || (b < 0 || b > 255))
+	if ((r < 0 || r > 255) || (g < 0 || g > 255) || (b < 0 || b > 255))
 		ft_error("Color value are wrong!");
-	return(r << 16 | g << 8 | b);
+	return (r << 16 | g << 8 | b);
 }
 
 void	set_map(char *file, t_map *map)

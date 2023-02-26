@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 18:38:04 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/21 18:27:53 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/26 20:24:38 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,20 @@ void	fill_colors(char *line, t_map *map)
 {
 	if (ft_strncmp("F ", line, 2) == 0)
 	{
+		if(map->f)
+			ft_error("the element has already filled 1");
 		map->f = set_colors(line);
 		map->elem++;
 	}
 	if (ft_strncmp("C ", line, 2) == 0)
 	{
-		map->c = set_colors(line);
-		map->elem++;
+		if(!map->c)
+		{
+			map->c = set_colors(line);
+			map->elem++;
+		}
+		else
+			ft_error("the element has already filled 2");
 	}
 }
 
@@ -92,8 +99,8 @@ void	all_ele_fil(t_map *map, char *line)
 	{
 		if (!line[0])
 			return ;
-		else if (!is_map_char(line[0]))
-			ft_error("Wrong element inside map!");
+		if (!is_map_char(line[0]))
+			ft_error("Wrong element inside the file");
 		init_map(line, map);
 	}
 }

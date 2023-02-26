@@ -6,7 +6,7 @@
 /*   By: abihe <abihe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 18:14:31 by abihe             #+#    #+#             */
-/*   Updated: 2023/02/19 18:24:32 by abihe            ###   ########.fr       */
+/*   Updated: 2023/02/26 20:43:34 by abihe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	p_pos(t_map *map, int i, int j)
 	map->player_x = i;
 	map->player_y = j;
 	map->player = map->l_map[i][j];
-	printf("i am in line [%d] and len [%d] and value ==> %c \n", map->player_x, map->player_y, map->player);
 }
 
 int	size_l(char *line, int j)

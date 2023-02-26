@@ -1,3 +1,3 @@
 check the all 6 first lines and they need be (no,so,we,ea, f,c)
-ft_atoi check number of the rgb and they are type int
-number of player must not be more than 1
+[done] ft_atoi check number of the rgb and they are type int
+[done] number of player must not be more or less than 1 
